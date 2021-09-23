@@ -21,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/characters', [CharacterController::class, 'index']);
+Route::get('/detail', [DetailController::class, 'index']);

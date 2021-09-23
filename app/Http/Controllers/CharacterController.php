@@ -9,7 +9,7 @@ class CharacterController extends Controller
 {
     public function index()
     {
-        $title = "My Characters";
+        $title = "League of Legends Character Collection";
 
         $characters = Character::all();
         //SELECT * FROM characters
