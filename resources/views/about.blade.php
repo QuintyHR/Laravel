@@ -21,17 +21,16 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 dark:text-white">
-                <h1>{{$title}}</h1>
-                <p>{{$paragraph}}</p>
-                <ul>
-                    @foreach($musicAlbums as $musicAlbum)
-                        <li>{{$musicAlbum['title']}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+            <nav>
+                <div><a href="/">Home</a></div>
+                <div><a href="/characters">Character Collection</a></div>
+                <div>About</div>
+            </nav>
+
+
+            <h1>{{$title}}</h1>
+            <p>{{$paragraph}}</p>
+
     </body>
 </html>
