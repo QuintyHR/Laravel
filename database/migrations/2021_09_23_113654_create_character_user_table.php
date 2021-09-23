@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterCharactersTable extends Migration
+class CreateCharacterUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AlterCharactersTable extends Migration
      */
     public function up()
     {
-        Schema::table('characters', function (Blueprint $table) {
-            $table->text('image')->after('description')->nullable();
+        Schema::create('character_user', function (Blueprint $table) {
+            $table->bigInteger('user_id');
+            $table->bigInteger('character_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AlterCharactersTable extends Migration
      */
     public function down()
     {
-        Schema::table('characters', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        Schema::dropIfExists('character_user');
     }
 }
