@@ -3,5 +3,21 @@ body {
 }
 
 nav {
+    display: flex;
+    float: left;
+}
 
+h1 {
+    text-align: center;
+}
+
+.character {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+
+    display: flex;
+    float: left;
+
+    text-align: center;
 }

@@ -23,14 +23,24 @@
             <div><a href="/about">About</a></div>
         </nav>
 
+        <br>
+
         <h1>{{$title}}</h1>
 
-        <section class="Box-Container">
-            <div class="Box">
-                @foreach($characters as $character)
+        <section class="box-container">
+            @foreach($characters as $character)
+                <div class="character">
                     <h2>{{$character->name}}</h2>
-                @endforeach
-            </div>
+
+                    <div class="image">
+
+                    </div>
+
+                    <div class="links">
+                        <a href="/detail">Info</a>
+                    </div>
+                </div>
+            @endforeach
         </section>
     </body>
 </html>
