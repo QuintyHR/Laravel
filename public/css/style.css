@@ -1,23 +1,54 @@
+html {
+    background-color: #023742;
+}
+
 body {
+    max-width: 1200px;
+    margin: auto;
+
     font-family: 'Nunito', sans-serif;
 }
 
 nav {
+    margin: 10px 10px 20px 20px;
+    padding-bottom: 10px;
+}
+
+.nav-left {
     display: flex;
     float: left;
+}
+
+.nav-right {
+    display: flex;
+    float: right;
+}
+
+.nav {
+    margin: 10px;
 }
 
 h1 {
     text-align: center;
+    color: white;
+}
+
+p {
+    color: white;
 }
 
 .character {
-    width: 200px;
-    height: 200px;
-    margin: 10px;
+    width: 290px;
+    height: 290px;
+    margin: 5px;
 
-    display: flex;
     float: left;
 
     text-align: center;
+    background-color: #38ABB2;
+}
+
+.link-button {
+    color: white;
+    background-color: #D2A73E;
 }

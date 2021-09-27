@@ -8,7 +8,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $title = "Over mijn website";
+        $title = "About";
         $paragraph = "I started this website to create a place full of information about different characters of League of Legends";
         $musicAlbums = [
             [
