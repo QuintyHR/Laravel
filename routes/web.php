@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\CreateController;
 use App\Http\Controllers\DetailController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/characters', [CharacterController::class, 'index']);
 Route::get('/detail', [DetailController::class, 'index']);
+Route::get('/create', [CreateController::class, 'index']);
+//Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 
 Auth::routes();
 
