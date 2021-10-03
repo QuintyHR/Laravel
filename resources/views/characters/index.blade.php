@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="links">
-                    <div class="link-button"><a href="/detail">Info</a></div>
+                    <div class="link-button"><a href="/detail/{{$character->id}}">Info</a></div>
                 </div>
             </div>
         @endforeach
