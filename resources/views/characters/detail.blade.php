@@ -9,8 +9,27 @@
         <div>
             <h1>{{$character->name}}</h1>
             <section>
+                <div class="image">
+                    <p>{{$character->image}}</p>
+                    <br>
+                </div>
+
                 <div>
+                    <h2>Character description</h2>
                     <p>{{$character->description}}</p>
+                    <br>
+                </div>
+
+                <div class="creator">
+                    <h2>Created by:</h2>
+                    <p>{{$character->creator}}</p>
+                    <br>
+                </div>
+
+                <div class="tag">
+                    <h2>Tags</h2>
+                    <p>{{$character->tag}}</p>
+                    <br>
                 </div>
             </section>
         </div>
