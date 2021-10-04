@@ -11,7 +11,7 @@
 
             <div>
                 <label for="description">Character Description</label>
-                <input type="text" name="description" id="description" required>
+                <textarea name="description" id="description" rows="4" cols="50"required></textarea>
             </div>
 
             <div>
@@ -26,7 +26,14 @@
 
             <div>
                 <label for="tag">Character Tag</label>
-                <input type="text" name="tag" id="tag" required>
+                <select name="tag" id="tag">
+                    <option value="Assasin" selected>Assasin</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Marksman">Marksman</option>
+                    <option value="Support">Support</option>
+                    <option value="Tank">Tank</option>
+                </select>
             </div>
 
             <div>
