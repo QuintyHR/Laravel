@@ -15,6 +15,7 @@ class AlterCharactersTable extends Migration
     {
         Schema::table('characters', function (Blueprint $table) {
             $table->text('image')->after('description')->nullable();
+            $table->boolean('active')->after('tag')->default('1');
         });
     }
 
@@ -27,6 +28,7 @@ class AlterCharactersTable extends Migration
     {
         Schema::table('characters', function (Blueprint $table) {
             $table->dropColumn('image');
+            $table->dropColumn('active');
         });
     }
 }

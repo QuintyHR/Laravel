@@ -17,9 +17,14 @@ class CharacterController extends Controller
         $search = $request->input('search');
 
         if (!$search) {
-            $characters = Character::all();
+
+            $characters = Character::all()
+                ->where('active', '=', 1);
         } else {
-            $characters = Character::where('name','like','%'.$search.'%')->orderBy('id')->paginate(6);
+            $characters = Character::where('name','like','%'.$search.'%')
+                ->where('active', '=', 1)
+                ->orderBy('id')
+                ->paginate(6);
         }
 
         return view('characters.index', compact('title', 'characters'));
