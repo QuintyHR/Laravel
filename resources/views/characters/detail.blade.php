@@ -10,7 +10,8 @@
             <h1>{{$character->name}}</h1>
             <section>
                 <div class="image">
-                    <p>{{$character->image}}</p>
+                    <img src="{{asset('storage/character/')}}/{{$character->image}}">
+
                     <br>
                 </div>
 

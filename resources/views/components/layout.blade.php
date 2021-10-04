@@ -32,7 +32,7 @@
                     <div class="nav"><a href="/characters">Character Collection</a></div>
                     <div class="nav"><a href="/about">About</a></div>
                     <div class="nav"><a href="/profile">Profile</a></div>
-                    <div class="nav"><a href="/create">Create Character</a></div>
+                    <div class="nav"><a href="/characters/create">Create Character</a></div>
                 </div>
                 <div class="nav-right">
                     <div>

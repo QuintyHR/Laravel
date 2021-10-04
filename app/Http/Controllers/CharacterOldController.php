@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Character;
 use Illuminate\Http\Request;
 
-class CharacterController extends Controller
+class CharacterOldController extends Controller
 {
     public function index(Request $request)
     {
@@ -29,4 +29,16 @@ class CharacterController extends Controller
 
         return view('characters.index', compact('title', 'characters'));
     }
+
+    public function create()
+    {
+
+    }
+
+    public function store()
+    {
+
+    }
 }
+
+

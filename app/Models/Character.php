@@ -30,4 +30,6 @@ use Illuminate\Database\Eloquent\Model;
 class Character extends Model
 {
     use HasFactory;
+
+    protected $fillable = ["name", "description", "image", "creator", "tag", "created_at", "updated_at"];
 }

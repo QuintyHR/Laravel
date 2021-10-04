@@ -56,7 +56,7 @@
                 <h2>{{$character->name}}</h2>
 
                 <div class="image">
-
+                    <img src="{{asset('storage/character/')}}/{{$character->image}}">
                 </div>
 
                 <div class="links">
