@@ -17,7 +17,7 @@ class CreateCharactersTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('creator');
+            $table->foreignId('user_id')->constrained();
             $table->string('tag');
             $table->timestamps();
         });

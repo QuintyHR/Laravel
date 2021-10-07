@@ -29,9 +29,9 @@ Route::get('/detail/{character}', [DetailController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 
-Route::resource('characters', CharacterController::class);
+Route::resource('characters', CharacterController::class)->middleware('auth');
 
-Route::get('delete/{id}', [CharacterController::class, 'delete']);
+Route::get('delete/{id}', [CharacterController::class, 'delete'])->middleware('auth');
 
 Auth::routes();
 

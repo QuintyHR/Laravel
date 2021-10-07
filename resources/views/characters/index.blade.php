@@ -55,9 +55,11 @@
             <div class="character">
                 <h2>{{$character->name}}</h2>
 
-                <div class="image">
-                    <img src="{{asset('storage/character/')}}/{{$character->image}}">
+                <div>
+                    <img class="index-image" src="{{asset('storage/character/')}}/{{$character->image}}">
                 </div>
+
+                <br>
 
                 <div class="links">
                     <div class="link-button"><a href="/detail/{{$character->id}}">Info</a></div>

@@ -39,13 +39,18 @@ p {
 
 .character {
     width: 290px;
-    height: 290px;
+    height: 400px;
     margin: 5px;
 
     float: left;
 
     text-align: center;
     background-color: #38ABB2;
+}
+
+.index-image {
+    align-content: center;
+    max-width: 250px;
 }
 
 .link-button {
