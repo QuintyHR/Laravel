@@ -28,7 +28,7 @@ Route::get('/', function () {
 //Main pages
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/characters', [CharacterController::class, 'index']);
-Route::get('/detail/{character}', [DetailController::class, 'index']);
+Route::get('/detail/{id}', [DetailController::class, 'index']);
 
 //Accounts
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
@@ -36,6 +36,8 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
 
 //Character editing
 Route::resource('characters', CharacterController::class)->middleware('auth');
+Route::get('edit/{id}', [CharacterController::class, 'edit'])->middleware('auth');
+Route::put('update/{id}', [CharacterController::class, 'update'])->middleware('auth');
 Route::get('delete/{id}', [CharacterController::class, 'delete'])->middleware('auth');
 
 

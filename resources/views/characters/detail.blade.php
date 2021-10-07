@@ -23,7 +23,7 @@
 
                 <div class="creator">
                     <h2>Created by:</h2>
-                    <p>{{$character->creator}}</p>
+                    <p></p>
                     <br>
                 </div>
 

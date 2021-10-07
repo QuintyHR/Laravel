@@ -1,17 +1,19 @@
 <x-layout>
     <h1>{{$title}}</h1>
     <section class="Box">
-        <form action="{{ route('characters.store') }}" method="post" enctype="multipart/form-data">
+        <form action="/update/{{$character->id}}" method="post" enctype="multipart/form-data">
             <!-- Add CSRF Token -->
             @csrf
+            @method('PUT')
+
             <div>
                 <label for="name">Character Name</label>
-                <input type="text" name="name" id="name" required>
+                <input type="text" name="name" id="name" value="{{$character->name}}" required>
             </div>
 
             <div>
                 <label for="description">Character Description</label>
-                <input type="text" name="description" id="description" rows="4" cols="50" required>
+                <input type="text" name="description" id="description" value="{{$character->description}}" rows="4" cols="50" required>
             </div>
 
             <div>

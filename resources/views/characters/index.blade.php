@@ -66,6 +66,10 @@
                 </div>
 
                 <div class="links">
+                    <div class="link-button"><a href="/edit/{{$character->id}}">Edit</a></div>
+                </div>
+
+                <div class="links">
                     <div class="link-button"><a href="/delete/{{$character->id}}">Delete</a></div>
                 </div>
             </div>

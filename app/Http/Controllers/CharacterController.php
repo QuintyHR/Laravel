@@ -111,7 +111,10 @@ class CharacterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'Edit character';
+
+        $character = Character::find($id);
+        return view('characters.edit', compact('title', 'character'));
     }
 
     /**
@@ -123,7 +126,18 @@ class CharacterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $title = "League of Legends Character Collection";
+        $character = Character::find($id);
+
+        $character -> name = $request->input('name');
+        $character -> description = $request->input('description');
+        $character -> user_id = $id;
+        $character -> tag = $request->input('tag');
+        $character -> image = $request->input('image');
+
+        $character->update(); // Finally, save the record.
+
+        return redirect()->back();
     }
 
     /**
