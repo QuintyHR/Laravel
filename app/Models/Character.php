@@ -31,5 +31,5 @@ class Character extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "description", "image", "creator", "tag", "created_at", "updated_at"];
+    protected $fillable = ["name", "description", "image", "user_id", "tag", "created_at", "updated_at"];
 }

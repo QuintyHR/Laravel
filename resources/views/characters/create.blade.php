@@ -20,11 +20,6 @@
             </div>
 
             <div>
-                <label for="creator">Character Creator</label>
-                <input type="text" name="creator" id="creator" required>
-            </div>
-
-            <div>
                 <label for="tag">Character Tag</label>
                 <select name="tag" id="tag">
                     <option value="Assasin" selected>Assasin</option>

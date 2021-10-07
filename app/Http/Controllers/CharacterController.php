@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CharacterController extends Controller
 {
@@ -57,11 +58,12 @@ class CharacterController extends Controller
     {
         $title = 'Create new character';
 
+        $id = Auth::id();
+
         // Validate the inputs
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'creator' => 'required',
             'tag' => 'required'
         ]);
 
@@ -79,7 +81,7 @@ class CharacterController extends Controller
             $character = new Character([
                 "name" => $request->get('name'),
                 "description" => $request->get('description'),
-                "creator" => $request->get('creator'),
+                "user_id" => $id,
                 "tag" => $request->get('tag'),
                 "image" => $request->file->hashName()
             ]);
