@@ -31,6 +31,8 @@ Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 
 Route::resource('characters', CharacterController::class);
 
+Route::get('delete/{id}', [CharacterController::class, 'delete']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

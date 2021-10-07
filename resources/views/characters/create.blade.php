@@ -11,7 +11,7 @@
 
             <div>
                 <label for="description">Character Description</label>
-                <textarea name="description" id="description" rows="4" cols="50"required></textarea>
+                <textarea name="description" id="description" rows="4" cols="50" required></textarea>
             </div>
 
             <div>
