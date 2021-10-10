@@ -51,6 +51,18 @@ nav {
     background-color: #38ABB2;
 }
 
+input {
+    color: black;
+}
+
+select {
+    color: black;
+}
+
+.submit {
+    color: black;
+}
+
 h1 {
     text-align: center;
     color: white;

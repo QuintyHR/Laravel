@@ -33,8 +33,10 @@
                 </select>
             </div>
 
+            <br>
+
             <div>
-                <button type="submit">Submit</button>
+                <button class="submit" type="submit">Submit</button>
             </div>
         </form>
     </section>

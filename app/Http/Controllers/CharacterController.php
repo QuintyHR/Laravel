@@ -129,13 +129,29 @@ class CharacterController extends Controller
         $title = "League of Legends Character Collection";
         $character = Character::find($id);
 
-        $character -> name = $request->input('name');
-        $character -> description = $request->input('description');
-        $character -> user_id = $id;
-        $character -> tag = $request->input('tag');
-        $character -> image = $request->input('image');
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'tag' => 'required'
+        ]);
 
-        $character->update(); // Finally, save the record.
+        if ($request->hasFile('file')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->file->store('character', 'public');
+
+            $character -> name = $request->input('name');
+            $character -> description = $request->input('description');
+            $character -> user_id = $id;
+            $character -> tag = $request->input('tag');
+            $character -> image = $request->file->hashName();
+
+            $character->update(); // Finally, save the record.
+        }
 
         return redirect()->back();
     }
