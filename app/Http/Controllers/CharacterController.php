@@ -166,6 +166,25 @@ class CharacterController extends Controller
     {
         $character = Character::find($id);
         $character->delete();
+
+//        if ($request->hasFile('file')) {
+//            Storage::delete($myImage->file); // If $file is path to old image
+//
+//            $myImage->file= $request->file('file')->store('name-of-folder');
+//        }
+        
         return redirect()->back();
+    }
+
+    public function deleteImage(Request $request) {
+
+        $character = Character::find($request->id);
+
+        unlink("storage/".$character->image);
+
+        Character::where("id", $character->id)->delete();
+
+        return back()->with("success", "Character deleted successfully.");
+
     }
 }
