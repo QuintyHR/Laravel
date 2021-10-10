@@ -10,7 +10,7 @@
             <h1>{{$character->name}}</h1>
             <section>
                 <div class="image">
-                    <img src="{{asset('storage/character/')}}/{{$character->image}}">
+                    <img class="image" src="{{asset('storage/character/')}}/{{$character->image}}">
 
                     <br>
                 </div>
@@ -18,12 +18,6 @@
                 <div>
                     <h2>Character description</h2>
                     <p>{{$character->description}}</p>
-                    <br>
-                </div>
-
-                <div class="creator">
-                    <h2>Created by:</h2>
-                    <p></p>
                     <br>
                 </div>
 

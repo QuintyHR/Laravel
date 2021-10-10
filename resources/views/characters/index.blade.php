@@ -62,15 +62,11 @@
                 <br>
 
                 <div class="links">
+                    <div class="link-button"><a href="">{{$favourite}}</a></div>
+                </div>
+
+                <div class="links">
                     <div class="link-button"><a href="/detail/{{$character->id}}">Info</a></div>
-                </div>
-
-                <div class="links">
-                    <div class="link-button"><a href="/edit/{{$character->id}}">Edit</a></div>
-                </div>
-
-                <div class="links">
-                    <div class="link-button"><a href="/delete/{{$character->id}}">Delete</a></div>
                 </div>
             </div>
         @endforeach

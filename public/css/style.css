@@ -97,6 +97,10 @@ a:hover {
     background-color: #38ABB2;
 }
 
+.image {
+    max-width: 1200px;
+}
+
 .index-image {
     align-content: center;
     max-width: 250px;

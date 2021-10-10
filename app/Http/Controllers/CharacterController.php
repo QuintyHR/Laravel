@@ -16,6 +16,8 @@ class CharacterController extends Controller
     public function index(Request $request)
     {
         $title = "League of Legends Character Collection";
+        $favourite = "Add to favourites";
+        //$favourite = "Remove from favourites";
 
         //SELECT * FROM characters
         //dd($characters);
@@ -33,7 +35,7 @@ class CharacterController extends Controller
                 ->paginate(6);
         }
 
-        return view('characters.index', compact('title', 'characters'));
+        return view('characters.index', compact('title', 'favourite', 'characters'));
     }
 
     /**
@@ -172,7 +174,7 @@ class CharacterController extends Controller
 //
 //            $myImage->file= $request->file('file')->store('name-of-folder');
 //        }
-        
+
         return redirect()->back();
     }
 
