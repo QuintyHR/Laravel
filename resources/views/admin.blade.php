@@ -17,7 +17,7 @@
             @foreach($characters as $character)
                 <tr>
                     <td>{{$character->name}}</td>
-                    <td>Switch</td>
+                    <td><input data-id="{{$character->id}}" class="toggle-button" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $character->active ? 'checked' : '' }}></td>
                     <td><a href="/edit/{{$character->id}}">Edit</a></td>
                     <td><a href="/delete/{{$character->id}}">Delete</a></td>
                 </tr>

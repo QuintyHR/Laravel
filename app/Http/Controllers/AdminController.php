@@ -25,4 +25,13 @@ class AdminController extends Controller
             return view('admin', compact('title', 'characters'));
         }
     }
+
+    public function changeActive(Request $request)
+    {
+        $character = Character::find($request->character_id);
+        $character->active = $request->active;
+        $character->save();
+
+        return response()->json(['success'=>'Character status changed successfully.']);
+    }
 }

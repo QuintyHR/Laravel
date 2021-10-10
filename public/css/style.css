@@ -3,10 +3,25 @@ html {
 }
 
 body {
-    max-width: 1200px;
     margin: auto;
 
+    background-color: #023742;
+    color: white;
+
     font-family: 'Nunito', sans-serif;
+}
+
+header {
+    margin: auto;
+    padding-bottom: 20px;
+
+    background-color: #38ABB2;
+    font-size: 20px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
 }
 
 nav {
@@ -24,8 +39,16 @@ nav {
     float: right;
 }
 
+.nav-right-logout {
+    display: flex;
+    float: right;
+    padding-top: 10px;
+}
+
 .nav {
     margin: 10px;
+
+    background-color: #38ABB2;
 }
 
 h1 {
@@ -35,6 +58,18 @@ h1 {
 
 p {
     color: white;
+}
+
+a {
+    color: #ffffff;
+    background-color: #38ABB2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #023742;
+    background-color: #38ABB2;
+    text-decoration: none;
 }
 
 .character {

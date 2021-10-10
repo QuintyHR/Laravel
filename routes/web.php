@@ -33,6 +33,7 @@ Route::get('/detail/{id}', [DetailController::class, 'index']);
 //Accounts
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
+Route::get('/changeActive', [AdminController::class, 'changeActive'])->middleware('auth');
 
 //Character editing
 Route::resource('characters', CharacterController::class)->middleware('auth');
