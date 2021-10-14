@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\CharacterUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,8 @@ class ProfileController extends Controller
         $title = "My profile";
         $id = Auth::id();
 
-        $favouriteCharacters = CharacterUser::where('user_id','=', $id);
+        //$favouriteCharacters = CharacterUser::where('user_id','=', $id);
+        $favouriteCharacters = Auth::user()->characters;
 
         $myCharacters = Character::all()
             ->where('user_id','=', $id)

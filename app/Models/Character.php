@@ -26,10 +26,22 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereTag($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Character whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $image
+ * @property int $user_id
+ * @property int $active
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Character whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Character whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Character whereUserId($value)
  */
 class Character extends Model
 {
     use HasFactory;
 
     protected $fillable = ["name", "description", "image", "user_id", "tag", "created_at", "updated_at"];
+
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
 }
