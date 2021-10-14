@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Character;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CharacterController extends Controller
 {
@@ -113,10 +114,20 @@ class CharacterController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Edit character';
-
         $character = Character::find($id);
-        return view('characters.edit', compact('title', 'character'));
+
+        $user_id = Auth::id();
+
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        if ($user->role == 'admin' || $user_id == $character->user_id) {
+            $title = 'Edit character';
+
+            $character = Character::find($id);
+            return view('characters.edit', compact('title', 'character'));
+        } else {
+            abort(401);
+        }
     }
 
     /**
@@ -128,7 +139,6 @@ class CharacterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $title = "League of Legends Character Collection";
         $character = Character::find($id);
 
         $request->validate([
@@ -167,15 +177,24 @@ class CharacterController extends Controller
     public function delete($id)
     {
         $character = Character::find($id);
-        $character->delete();
+
+        $user_id = Auth::id();
+
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        if ($user->role == 'admin' || $user_id == $character->user_id) {
+            $character->delete();
+
+            return redirect()->back();
+        } else {
+            abort(401);
+        }
 
 //        if ($request->hasFile('file')) {
 //            Storage::delete($myImage->file); // If $file is path to old image
 //
 //            $myImage->file= $request->file('file')->store('name-of-folder');
 //        }
-
-        return redirect()->back();
     }
 
     public function deleteImage(Request $request) {
