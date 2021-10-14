@@ -17,5 +17,7 @@ class CharacterUser extends Model
 {
     use HasFactory;
 
+    protected $table = "character_user";
+
     protected $fillable = ["user_id", "character_id", "created_at", "updated_at"];
 }

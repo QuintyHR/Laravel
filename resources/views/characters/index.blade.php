@@ -61,9 +61,13 @@
 
                 <br>
 
-                <div class="links">
-                    <div class="link-button"><a href="">{{$favourite}}</a></div>
-                </div>
+                <form action="/favourite" method="post"  enctype="multipart/form-data">
+                    @csrf
+                    <div class="favourite">
+                        <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
+                        <input type="submit" value="{{$favourite}}">
+                    </div>
+                </form>
 
                 <div class="links">
                     <div class="link-button"><a href="/detail/{{$character->id}}">Info</a></div>

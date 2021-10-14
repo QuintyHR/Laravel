@@ -1,7 +1,7 @@
 $(function() {
     $('.toggle-button').change(function() {
-        var active = $(this).prop('checked') == true ? 1 : 0;
-        var character_id = $(this).data('id');
+        let active = $(this).prop('checked') === true ? 1 : 0;
+        let character_id = $(this).data('id');
 
         $.ajax({
             type: "GET",

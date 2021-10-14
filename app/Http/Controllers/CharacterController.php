@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Character;
+use App\Models\CharacterUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -207,5 +208,19 @@ class CharacterController extends Controller
 
         return back()->with("success", "Character deleted successfully.");
 
+    }
+
+    public function favourite(Request $request)
+    {
+        $id = Auth::id();
+
+        $favourite = new CharacterUser([
+            "user_id" => $id,
+            "character_id" => $request->get('character_id')
+        ]);
+
+        $favourite->save();
+
+        return back();
     }
 }
