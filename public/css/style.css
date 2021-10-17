@@ -106,7 +106,37 @@ a:hover {
     max-width: 250px;
 }
 
+.detail-image {
+    align-content: center;
+    max-width: 500px;
+}
+
 .link-button {
     color: white;
     background-color: #D2A73E;
+}
+
+.detail {
+    padding-top: 20px;
+}
+
+.big-image {
+    padding-top: 20px;
+}
+
+.detail-image {
+    float: left;
+    padding-right: 100px;
+}
+
+.info {
+    float: left;
+}
+
+.favourites {
+    float: left;
+}
+
+.creations {
+    float: left;
 }

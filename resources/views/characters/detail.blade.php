@@ -5,16 +5,18 @@
 @endphp
 
 <x-layout>
-    <div>
+    <div class="detail">
         <div>
             <h1>{{$character->name}}</h1>
-            <section>
+            <section class="big-image">
                 <div class="image">
-                    <img class="image" src="{{asset('storage/character/')}}/{{$character->image}}">
+                    <img class="detail-image" src="{{asset('storage/character/')}}/{{$character->image}}">
 
                     <br>
                 </div>
+            </section>
 
+            <section class="info">
                 <div>
                     <h2>Character description</h2>
                     <p>{{$character->description}}</p>
@@ -22,7 +24,7 @@
                 </div>
 
                 <div class="tag">
-                    <h2>Tags</h2>
+                    <h2>Champion role</h2>
                     <p>{{$character->tag}}</p>
                     <br>
                 </div>

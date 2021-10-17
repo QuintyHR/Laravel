@@ -1,8 +1,9 @@
 <x-layout>
     <h1>{{$title}}</h1>
+
+    <p>My favourites</p>
     <section class="favourites">
-        <div>
-            <p>My favourites</p>
+        <div class="favourites">
             @foreach($favouriteCharacters as $favouriteCharacter)
                 <div class="character">
                     <h2>{{$favouriteCharacter->name}}</h2>
@@ -22,33 +23,9 @@
     </section>
 
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
+    <p>My creations</p>
     <section class="creations">
-        <div>
-            <p>My creations</p>
+        <div class="creations">
             @foreach($myCharacters as $myCharacter)
                 <div class="character">
                     <h2>{{$myCharacter->name}}</h2>
