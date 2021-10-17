@@ -24,7 +24,7 @@
                     <label for="t3">Mage</label>
                 </div>
                 <div>
-                    <input name="tags" type="radio" id="t4" value="Marksman" autocomplete="off">
+                    <input name="tag" type="radio" id="t4" value="Marksman" autocomplete="off">
                     <label for="t4">Marksman</label>
                 </div>
                 <div>
