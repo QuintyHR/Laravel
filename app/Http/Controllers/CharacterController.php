@@ -18,8 +18,14 @@ class CharacterController extends Controller
     public function index(Request $request)
     {
         $title = "League of Legends Character Collection";
+        $id = Auth::id();
+
+        $userFavourites = CharacterUser::all()
+            ->where('user_id', '=', $id);
+        //dd($userFavourites);
+
         $favourite = "Add to favourites";
-        //$favourite = "Remove from favourites";
+        $unFavourite = "Remove from favourites";
 
         //SELECT * FROM characters
         //dd($characters);
@@ -34,10 +40,10 @@ class CharacterController extends Controller
             $characters = Character::where('name','like','%'.$search.'%')
                 ->where('active', '=', 1)
                 ->orderBy('id')
-                ->paginate(6);
+                ->paginate(20);
         }
 
-        return view('characters.index', compact('title', 'favourite', 'characters'));
+        return view('characters.index', compact('title', 'favourite', 'unFavourite', 'characters', 'userFavourites'));
     }
 
     /**
@@ -222,5 +228,20 @@ class CharacterController extends Controller
         $favourite->save();
 
         return back();
+    }
+
+    public function unFavourite(Request $request)
+    {
+        $character_id = $request->get('character_id');
+
+        $user_id = Auth::id();
+
+        $character_user = DB::table('character_user')
+            ->where('user_id', $user_id)
+            ->where('character_id', $character_id);
+
+        $character_user->delete();
+
+        return redirect()->back();
     }
 }

@@ -36,11 +36,12 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
 Route::get('/changeActive', [AdminController::class, 'changeActive'])->middleware('auth');
 
 //Character editing
-Route::resource('characters', CharacterController::class)->middleware('auth');
+Route::resource('characters', CharacterController::class);
 Route::get('edit/{id}', [CharacterController::class, 'edit'])->middleware('auth');
 Route::put('update/{id}', [CharacterController::class, 'update'])->middleware('auth');
 Route::get('delete/{id}', [CharacterController::class, 'delete'])->middleware('auth');
 Route::post('/favourite', [CharacterController::class, 'favourite'])->middleware('auth');
+Route::post('/unFavourite', [CharacterController::class, 'unFavourite'])->middleware('auth');
 
 
 //Laravel login
