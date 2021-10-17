@@ -32,12 +32,18 @@ class CharacterController extends Controller
         //dd($characters);
 
         $search = $request->input('search');
+        $tag = $request->input('tag');
 
-        if (!$search) {
-
+        if (!$search && !$tag) {
             $characters = Character::all()
                 ->where('active', '=', 1);
-        } else {
+        }
+        elseif($tag) {
+            $characters = Character::all()
+                ->where('tag', '=', $tag)
+                ->where('active', '=', 1);
+        }
+        else {
             $characters = Character::where('name','like','%'.$search.'%')
                 ->where('active', '=', 1)
                 ->orderBy('id')
