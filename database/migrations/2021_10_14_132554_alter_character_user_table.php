@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCharacterUserTable extends Migration
+class AlterCharacterUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class CreateCharacterUserTable extends Migration
     public function up()
     {
         Schema::create('character_user', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('character_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
+            $table->primary('user_id', 'character_id');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateCharacterUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_user');
+        Schema::table('characters', function (Blueprint $table) {
+            $table->dropPrimary('user_id', 'character_id');
+        });
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Character;
 use App\Models\CharacterUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,9 +54,16 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        $title = 'Create new character';
+        $id = Auth::id();
+        $user = User::find($id);
 
-        return view('characters.create', compact('title'));
+        if ($user->role == 'admin' || $user->amount_favourites >= 5) {
+            $title = 'Create new character';
+
+            return view('characters.create', compact('title'));
+        } else {
+            abort(401);
+        }
     }
 
     /**
@@ -69,37 +77,42 @@ class CharacterController extends Controller
         $title = 'Create new character';
 
         $id = Auth::id();
+        $user = User::find($id);
 
-        // Validate the inputs
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'tag' => 'required'
-        ]);
+        if ($user->role == 'admin' || $user->amount_favourites >= 5) {
 
-        // ensure the request has a file before we attempt anything else.
-        if ($request->hasFile('file')) {
-
+            // Validate the inputs
             $request->validate([
-                'image' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                'name' => 'required',
+                'description' => 'required',
+                'tag' => 'required'
             ]);
 
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->file->store('character', 'public');
+            // ensure the request has a file before we attempt anything else.
+            if ($request->hasFile('file')) {
 
-            // Store the record, using the new file hashname which will be it's new filename identity.
-            $character = new Character([
-                "name" => $request->get('name'),
-                "description" => $request->get('description'),
-                "user_id" => $id,
-                "tag" => $request->get('tag'),
-                "image" => $request->file->hashName()
-            ]);
-            $character->save(); // Finally, save the record.
+                $request->validate([
+                    'image' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                ]);
+
+                // Save the file locally in the storage/public/ folder under a new folder named /product
+                $request->file->store('character', 'public');
+
+                // Store the record, using the new file hashname which will be it's new filename identity.
+                $character = new Character([
+                    "name" => $request->get('name'),
+                    "description" => $request->get('description'),
+                    "user_id" => $id,
+                    "tag" => $request->get('tag'),
+                    "image" => $request->file->hashName()
+                ]);
+                $character->save(); // Finally, save the record.
+            }
+
+            return view('characters.create', compact('title'));
+        } else {
+            abort(401);
         }
-
-        return view('characters.create', compact('title'));
-
     }
 
     /**
@@ -227,6 +240,13 @@ class CharacterController extends Controller
 
         $favourite->save();
 
+
+        $user = User::find($id);
+
+        $user -> amount_favourites += 1;
+
+        $user->update();
+
         return back();
     }
 
@@ -234,13 +254,20 @@ class CharacterController extends Controller
     {
         $character_id = $request->get('character_id');
 
-        $user_id = Auth::id();
+        $id = Auth::id();
 
         $character_user = DB::table('character_user')
-            ->where('user_id', $user_id)
+            ->where('user_id', $id)
             ->where('character_id', $character_id);
 
         $character_user->delete();
+
+
+        $user = User::find($id);
+
+        $user -> amount_favourites -= 1;
+
+        $user->update();
 
         return redirect()->back();
     }

@@ -69,27 +69,22 @@
                 @guest
 
                 @else
-                    @foreach($userFavourites as $userFavourite)
-                    @if($userFavourite->character_id == $character->id)
-                        <form action="/unFavourite" method="post"  enctype="multipart/form-data">
-                            @csrf
-                            <div class="unFavourite">
-                                <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
-                                <input type="submit" value="{{$unFavourite}}">
-                            </div>
-                        </form>
-                    @else
-                        <form action="/favourite" method="post"  enctype="multipart/form-data">
-                            @csrf
-                            <div class="favourite">
-                                <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
-                                <input type="submit" value="{{$favourite}}">
-                            </div>
-                        </form>
-                    @endif
-                    @endforeach
-                @endguest
+                    <form action="/unFavourite" method="post"  enctype="multipart/form-data">
+                        @csrf
+                        <div class="unFavourite">
+                            <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
+                            <input type="submit" value="{{$unFavourite}}">
+                        </div>
+                    </form>
 
+                    <form action="/favourite" method="post"  enctype="multipart/form-data">
+                        @csrf
+                        <div class="favourite">
+                            <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
+                            <input type="submit" value="{{$favourite}}">
+                        </div>
+                    </form>
+                @endguest
                 <div class="links">
                     <div class="link-button"><a href="/detail/{{$character->id}}">Info</a></div>
                 </div>
