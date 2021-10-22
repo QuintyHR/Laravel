@@ -88,7 +88,7 @@ a:hover {
 
 .character {
     width: 290px;
-    height: 420px;
+    height: 460px;
     margin: 5px;
 
     float: left;
@@ -124,6 +124,23 @@ a:hover {
 
 .link-button:hover {
     color: #797979;
+    background-color: #D2A73E;
+
+    font-size: 20px;
+}
+
+.favourite {
+    background-color: #D2A73E;
+}
+
+.unFavourite {
+    background-color: #D2A73E;
+}
+
+.favourite-button {
+    border: none;
+
+    color: white;
     background-color: #D2A73E;
 
     font-size: 20px;

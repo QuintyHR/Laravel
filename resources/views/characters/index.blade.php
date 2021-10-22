@@ -75,17 +75,21 @@
                         @csrf
                         <div class="unFavourite">
                             <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
-                            <input type="submit" value="{{$unFavourite}}">
+                            <input type="submit" value="{{$unFavourite}}" class="favourite-button">
                         </div>
                     </form>
+
+                <br>
 
                     <form action="/favourite" method="post"  enctype="multipart/form-data">
                         @csrf
                         <div class="favourite">
                             <input type="hidden" id="character_id" name="character_id" value="{{$character->id}}">
-                            <input type="submit" value="{{$favourite}}">
+                            <input type="submit" value="{{$favourite}}" class="favourite-button">
                         </div>
                     </form>
+
+                    <br>
                 @endguest
                 <div class="links">
                     <div><a href="/detail/{{$character->id}}" class="link-button">Info</a></div>
