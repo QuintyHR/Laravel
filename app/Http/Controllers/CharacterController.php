@@ -45,9 +45,9 @@ class CharacterController extends Controller
         }
         else {
             $characters = Character::where('name','like','%'.$search.'%')
-                ->where('active', '=', 1)
-                ->orderBy('id')
-                ->paginate(20);
+                ->where('active', '=', 1);
+//                ->orderBy('id')
+//                ->paginate(20);
         }
 
         return view('characters.index', compact('title', 'favourite', 'unFavourite', 'characters', 'userFavourites'));

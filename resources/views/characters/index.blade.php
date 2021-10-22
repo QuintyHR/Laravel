@@ -88,7 +88,7 @@
                     </form>
                 @endguest
                 <div class="links">
-                    <div class="link-button"><a href="/detail/{{$character->id}}">Info</a></div>
+                    <div><a href="/detail/{{$character->id}}" class="link-button">Info</a></div>
                 </div>
             </div>
         @endforeach
