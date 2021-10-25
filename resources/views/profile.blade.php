@@ -1,6 +1,10 @@
 <x-layout>
     <h1>{{$title}}</h1>
 
+    <p><a href="/editProfile/{{$id}}">Edit Profile</a></p>
+
+    <br>
+
     <p>My favourites</p>
     <section class="favourites">
         <div class="favourites">
