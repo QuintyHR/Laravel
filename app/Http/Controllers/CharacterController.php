@@ -23,31 +23,27 @@ class CharacterController extends Controller
 
         $userFavourites = CharacterUser::all()
             ->where('user_id', '=', $id);
-        //dd($userFavourites);
 
         $favourite = "Add to favourites";
         $unFavourite = "Remove from favourites";
-
-        //SELECT * FROM characters
-        //dd($characters);
 
         $search = $request->input('search');
         $tag = $request->input('tag');
 
         if (!$search && !$tag) {
+
             $characters = Character::all()
                 ->where('active', '=', 1);
-        }
-        elseif($tag) {
+            //If $search is not empty it will show all characters that match the input and orders them by ID
+        }elseif($tag){
             $characters = Character::all()
-                ->where('tag', '=', $tag)
+                ->where('Tag', '=', $tag)
                 ->where('active', '=', 1);
-        }
-        else {
+        } else {
             $characters = Character::where('name','like','%'.$search.'%')
-                ->where('active', '=', 1);
-//                ->orderBy('id')
-//                ->paginate(20);
+                ->where('active', '=', 1)
+                ->orderBy('id')
+                ->paginate(20);
         }
 
         return view('characters.index', compact('title', 'favourite', 'unFavourite', 'characters', 'userFavourites'));
