@@ -2,7 +2,7 @@
     <h1>{{$title}}</h1>
 
     <section class="Box">
-        <form action="/update/{{$user->id}}" method="post" enctype="multipart/form-data">
+        <form action="/updateProfile/{{$user->id}}" method="post" enctype="multipart/form-data">
             <!-- Add CSRF Token -->
             @csrf
             @method('PUT')

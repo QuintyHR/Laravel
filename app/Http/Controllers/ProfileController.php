@@ -55,31 +55,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $character = Character::find($id);
+        $user = User::find($id);
 
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'tag' => 'required'
+            'name' => 'required'
         ]);
 
-        if ($request->hasFile('file')) {
+        $user -> name = $request->input('name');
 
-            $request->validate([
-                'image' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-            ]);
+        $user->update(); // Finally, save the record.
 
-            // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->file->store('character', 'public');
-
-            $character -> name = $request->input('name');
-            $character -> description = $request->input('description');
-            $character -> user_id = $id;
-            $character -> tag = $request->input('tag');
-            $character -> image = $request->file->hashName();
-
-            $character->update(); // Finally, save the record.
-        }
 
         return redirect()->back();
     }

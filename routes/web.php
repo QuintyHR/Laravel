@@ -33,6 +33,9 @@ Route::get('/detail/{id}', [DetailController::class, 'index']);
 //Accounts
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::get('/editProfile/{id}', [ProfileController::class, 'edit'])->middleware('auth');
+Route::put('/updateProfile/{id}', [ProfileController::class, 'update'])->middleware('auth');
+
+//Admin
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
 Route::get('/changeActive', [AdminController::class, 'changeActive'])->middleware('auth');
 
