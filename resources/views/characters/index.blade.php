@@ -71,7 +71,9 @@
                 @guest
 
                 @else
-                    @if($character->users()->find(Auth::id()))
+{{--                    {{dd(Auth::user()->favorites->has($character->id))}}--}}
+                    @if(Auth::user()->favorites->contains($character->id))
+{{--                    @if($character->users()->find(Auth::id()))--}}
                     <form action="/unFavourite" method="post"  enctype="multipart/form-data">
                         @csrf
                         <div class="unFavourite">

@@ -1,12 +1,16 @@
 <x-layout>
     <h1>{{$title}}</h1>
 
-    <p><a href="/editProfile/{{$id}}" class="edit-profile">Edit Profile</a></p>
+    <a href="/editProfile/{{$id}}" class="edit-profile">Edit Profile</a>
+
+    @if($user->role == "admin")
+        <a href="/admin" class="admin">Admin page</a>
+    @endif
 
     <br>
 
-    <p>My favourites</p>
     <section class="favourites">
+        <h2 class="myFavourites">My favourites</h2>
         <div class="favourites">
             @foreach($favouriteCharacters as $favouriteCharacter)
                 <div class="character">
@@ -37,8 +41,9 @@
     </section>
 
     <br>
-    <p>My creations</p>
+
     <section class="creations">
+        <h2 class="myCreations">My creations</h2>
         <div class="creations">
             @foreach($myCharacters as $myCharacter)
                 <div class="character-created">
@@ -51,19 +56,19 @@
                     <br>
 
                     <div class="links">
-                        <div class="link-button"><a href="/detail/{{$myCharacter->id}}">Info</a></div>
+                        <div class="link-button"><a href="/detail/{{$myCharacter->id}}" class="link-button">Info</a></div>
                     </div>
 
                     <br>
 
                     <div class="links">
-                        <div class="link-button"><a href="/edit/{{$myCharacter->id}}">Edit</a></div>
+                        <div class="link-button"><a href="/edit/{{$myCharacter->id}}" class="link-button">Edit</a></div>
                     </div>
 
                     <br>
 
                     <div class="links">
-                        <div class="link-button"><a href="/delete/{{$myCharacter->id}}">Delete</a></div>
+                        <div class="link-button"><a href="/delete/{{$myCharacter->id}}" class="link-button">Delete</a></div>
                     </div>
                 </div>
             @endforeach

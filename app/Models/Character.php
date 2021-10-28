@@ -42,6 +42,6 @@ class Character extends Model
     protected $fillable = ["name", "description", "image", "user_id", "tag", "created_at", "updated_at"];
 
     public function users() {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

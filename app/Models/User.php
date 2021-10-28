@@ -80,6 +80,10 @@ class User extends Authenticatable
     ];
 
     public function characters() {
+        return $this->HasMany(Character::class);
+    }
+
+    public function favorites() {
         return $this->belongsToMany(Character::class);
     }
 }

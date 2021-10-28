@@ -15,15 +15,14 @@ class ProfileController extends Controller
     {
         $title = "My profile";
         $id = Auth::id();
+        $user = User::find($id);
 
         //$favouriteCharacters = CharacterUser::where('user_id','=', $id);
-        $favouriteCharacters = Auth::user()->characters;
+        $favouriteCharacters = Auth::user()->favorites;
 
-        $myCharacters = Character::all()
-            ->where('user_id','=', $id)
-            ->where('active', '=', 1);
+        $myCharacters = Auth::user()->characters()->whereActive( 1)->get();
 
-        return view('profile', compact('title', 'favouriteCharacters', 'myCharacters', 'id'));
+        return view('profile', compact('title', 'favouriteCharacters', 'myCharacters', 'id', 'user'));
     }
 
     /**

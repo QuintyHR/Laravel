@@ -59,7 +59,7 @@ class CharacterController extends Controller
         $id = Auth::id();
         $user = User::find($id);
 
-        if ($user->role == 'admin' || count($user->characters()->get()) >= 5) {
+        if ($user->role == 'admin' || $user->favorites()->count() >= 5) {
             $title = 'Create new character';
 
             return view('characters.create', compact('title'));
@@ -231,46 +231,52 @@ class CharacterController extends Controller
 
     }
 
-    public function favourite(Request $request)
+    public function favouriteUnfavourite(Request $request)
     {
-        $id = Auth::id();
-
-        $favourite = new CharacterUser([
-            "user_id" => $id,
-            "character_id" => $request->get('character_id')
-        ]);
-
-        $favourite->save();
-
-
-        $user = User::find($id);
-
-        $user -> amount_favourites += 1;
-
-        $user->update();
-
+        Auth::user()->favorites()->toggle($request->character_id);
         return back();
     }
 
-    public function unFavourite(Request $request)
-    {
-        $character_id = $request->get('character_id');
-
-        $id = Auth::id();
-
-        $character_user = DB::table('character_user')
-            ->where('user_id', $id)
-            ->where('character_id', $character_id);
-
-        $character_user->delete();
-
-
-        $user = User::find($id);
-
-        $user -> amount_favourites -= 1;
-
-        $user->update();
-
-        return redirect()->back();
-    }
+//    public function favourite(Request $request)
+//    {
+//        $id = Auth::id();
+//
+//        $favourite = new CharacterUser([
+//            "user_id" => $id,
+//            "character_id" => $request->get('character_id')
+//        ]);
+//
+//        $favourite->save();
+//
+//
+//        $user = User::find($id);
+//
+//        //$user -> amount_favourites += 1;
+//
+//        $user->update();
+//
+//        return back();
+//    }
+//
+//    public function unFavourite(Request $request)
+//    {
+//        $character_id = $request->get('character_id');
+//
+//        $id = Auth::id();
+//
+//        $character_user = DB::table('character_user')
+//            ->where('user_id', $id)
+//            ->where('character_id', $character_id);
+//
+//        $character_user->delete();
+//
+//
+//        $user = User::find($id);
+//
+//        //$user -> amount_favourites -= 1;
+//
+//        $user->update();
+//
+//        return redirect()->back();
+//    }
 }

@@ -74,6 +74,16 @@ p {
     color: white;
 }
 
+.myFavourites {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.myCreations {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
 a {
     color: #ffffff;
     background-color: #38ABB2;
@@ -150,6 +160,20 @@ a:hover {
 }
 
 .edit-profile:hover {
+    color: #797979;
+}
+
+.admin {
+    padding: 10px;
+    margin-left: 25px;
+
+    color: white;
+    background-color: #38ABB2;
+
+    font-size: 20px;
+}
+
+.admin:hover {
     color: #797979;
 }
 
