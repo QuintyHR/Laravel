@@ -71,6 +71,7 @@
                 @guest
 
                 @else
+                    @if($character->users()->find(Auth::id()))
                     <form action="/unFavourite" method="post"  enctype="multipart/form-data">
                         @csrf
                         <div class="unFavourite">
@@ -79,7 +80,7 @@
                         </div>
                     </form>
 
-                <br>
+                    @elseif(!$character->users()->find(Auth::id()))
 
                     <form action="/favourite" method="post"  enctype="multipart/form-data">
                         @csrf
@@ -88,6 +89,8 @@
                             <input type="submit" value="{{$favourite}}" class="favourite-button">
                         </div>
                     </form>
+
+                    @endif
 
                     <br>
                 @endguest
