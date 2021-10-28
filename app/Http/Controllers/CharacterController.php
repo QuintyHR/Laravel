@@ -59,7 +59,7 @@ class CharacterController extends Controller
         $id = Auth::id();
         $user = User::find($id);
 
-        if ($user->role == 'admin' || $user->amount_favourites >= 5) {
+        if ($user->role == 'admin' || count($user->characters()->get()) >= 5) {
             $title = 'Create new character';
 
             return view('characters.create', compact('title'));
